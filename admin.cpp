@@ -18,6 +18,7 @@ int registerStudent();
 int m = 0;
 int k =0;
 
+// Here We will Declare Admin Login function , username and password can be enter in cmd.
 
 int adminLogin()
 {
@@ -48,11 +49,13 @@ int adminLogin()
 	
 }
 
+// admin view returns the tasks available for admin
 int adminView()
 {	
     int goBack = 0;
     while(1)
-    {
+    {	
+	    	//Display available tasks by print << cout
 		system("cls");
 		cout<<"\n 1 Register a Student";
 		cout<<"\n 2 Delete All students name registered";
@@ -155,7 +158,8 @@ int checkListOfStudentsRegistered(){
 }
 
 
-
+/*Student registration happens here
+*/
 int registerStudent()
 {
     cout<<"\n ----- Form to Register Student ---- \n";	
@@ -201,11 +205,13 @@ int registerStudent()
 	}
     read.close();
 
+	//Open database file in append mode using ios::app
     ofstream out;
 	out.open("db.dat", ios::app);
 	out<<username+".dat"<<"\n";
 	out.close();
-
+	
+	// Create String Stream as buffer and write to file.
 	ofstream out1;
 	string temp = username+".dat";
 	out1.open(temp.c_str());
