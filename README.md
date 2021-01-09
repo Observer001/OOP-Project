@@ -1,5 +1,9 @@
 # Attendance Management (Cpp-Project)
 
+### Important Files for teacher's verficiation:
+* student.cpp
+* teacher.cpp
+* admin.cpp
 ### Concepts used:
 * Classes
 * Object
