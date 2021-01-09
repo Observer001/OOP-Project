@@ -6,13 +6,27 @@
 #include <stdlib.h>
 #include <sstream>
 
+//contains the student class, and this statement imports it to current running code.
 #include "student_header.h"
 
+// although std namespace has potential to pollute our 
+//namespace, but since there arent too many variables
+//in our project we can use it as default namespace.
 using namespace std;
 
+
+
+//declaring the standard methods available for student.
+// they are student view and student login
+// student has the least privilage in the management system.
 int studentView(); 
 int studentLogin(); 
 int checkStudentCredentials(string userName, string password); 
+
+
+
+//we can migrate these statements to respective teacher and admin files,
+// but for time being we declare their functions here itself.
 int adminLogin();
 int teacherlogin();
 int Attendance(string username);
@@ -32,8 +46,10 @@ cin>>username;
 cout<<"\n Enter password : ";
 cin>>password;
 
+	
+// perform forceful type checking incase invalid data formats are entered
+// and return 1 if credentials entered are valid else return 0
 int res = checkStudentCredentials(username, password);
-
 if(res  == 0)
 {
    cout<<"\n Invalid Credentials !!";
@@ -45,7 +61,7 @@ if(res  == 0)
     int goBack = 0;
 	while(1)
     {
-		
+		// clear screen before we switch view
 		system("cls");
 		cout<<"\n 1 To count my Attendance";
 		cout<<"\n 2 To send a leave application";
@@ -75,6 +91,14 @@ if(res  == 0)
 
 
 
+// as initialized in student_header.h we will now 
+//define functions and put actual functional code here
+
+/*Member functions are the functions, which have their
+declaration inside the class definition and works on the 
+data members of the class. The definition of member 
+functions can be inside or outside the definition of class. */
+
 int studentLogin()
 {   student s;      // creating object of class studnet
     system("cls");
@@ -83,9 +107,10 @@ int studentLogin()
     return 0; 
 }
 
+
+// now we define function outside the class
 int student::checkStudentCredentials(string username, string password)
-{
-	
+{	
 	ifstream read;
 	read.open("db.dat");
 	int recordFound = 0;
@@ -121,9 +146,16 @@ int student::checkStudentCredentials(string username, string password)
 }
 
 
+/*If the member function is defined inside the 
+class definition it can be defined directly, 
+but if its defined outside the class, then we
+have to use the scope resolution :: operator 
+along with class name alng with function name.*/
 
-int student::Attendance(string username)							// Function OVERLOADING
-{		int total_lines = 0;
+int student::Attendance(string username)							
+// Function OVERLOADING
+{		
+	int total_lines = 0;
 	string filename = username+".dat";
 
 
@@ -164,7 +196,8 @@ return 0;
 
 
 
-
+// leave application allows student to apply for leave, 
+//now the admin can reduce the percent of attendance from db.dat database. 
 int student::sendLeaveApplication(string username)
 {	
 	char add[100];
@@ -186,61 +219,13 @@ int student::sendLeaveApplication(string username)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//###################################################################### DRIVER CODE
+In this context a driver Code is just a 
+program that uses the class oralgorithm 
+that you're developing. It's primarily 
+used for testing your code while you 
+develop it.
+*/
 int main(int argc, char** argv) {
 	
 	while(1)
