@@ -8,15 +8,17 @@
 #include <stdlib.h>
 #include <sstream>
 
+//Teacher header file contains code for teacher related functions and classes
 #include "teacher_header.h"
 
 
 
-int Attendance();
-int teacherView();
-int teacherlogin();
+int Attendance(); // helps to mark attendance
+int teacherView(); // Display available options for teacher role
+int teacherlogin(); // allows to login for teacher
 
-
+// tecacher is an inherited class from user class 
+//who has username and password as its data members.
 int teacherlogin()
 {
 	system("cls");
@@ -46,6 +48,8 @@ int teacherlogin()
 }
 
 
+// we can mark attendance with this function and
+// the marking is stored in db.dat
 int Attendance()
 {   ifstream read;
     read.open("db.dat");
@@ -125,7 +129,9 @@ return 0;
 
 
 
-
+// as mentioned earlier we can display the available tasks for teacher
+// here the teacher can select/ input an integer and console will scan the input
+// and once the input is fetched, it will act according to switch cases.
 int teacherView()
 {	
     int goBack = 0;
